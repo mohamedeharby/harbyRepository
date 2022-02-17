@@ -1,0 +1,52 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE html>
+<f:view xmlns:f="http://java.sun.com/jsf/core" xmlns:h="http://java.sun.com/jsf/html" xmlns:p="http://primefaces.org/ui">
+    <html xmlns="http://www.w3.org/1999/xhtml">
+        <h:head>
+        <style type="text/css">
+    .ui-analog-clock {
+        width: 200px;
+    }
+     .detail {
+        width: 95%;
+        padding-left: 25px;
+    }
+
+    .detail td {
+        font-size: 24px;
+    }
+</style>
+        </h:head>
+        <h:body>
+        <p:clock displayMode="analog"/>
+            <div class="card">
+    <h:form id="form">
+        <p:repeat value="#{employeesBean.employees}" var="emp">
+            <div class="product">
+                <div class="product-list-item border-1 p-p-5">
+                    <div class="product-list-detail">
+                        <div class="product-name">#{emp.firstName}</div>
+                        <div class="product-description">#{emp.lastName}</div>
+                        <!--<p:rating readonly="true" value="#{product.rating}"/>-->
+                        <!--<i class="pi pi-tag product-category-icon"/><span
+                            class="product-category">#{product.category}</span>-->
+                    </div>
+                    <div class="product-list-action">
+                        <h:outputText value="#{emp.salary}" styleClass="product-price">
+                            <f:convertNumber currencySymbol="$" type="currency"/>
+                        </h:outputText>
+                        <p:commandButton type="button"
+                                         value="Add To Cart"
+                                         icon="pi pi-shopping-cart"
+                                         >
+                        </p:commandButton>
+                        <!--<span class="product-badge status-#{product.inventoryStatus.name().toLowerCase()}">#{product.inventoryStatus.text}</span>-->
+                    </div>
+                </div>
+            </div>
+        </p:repeat>
+    </h:form>
+</div>
+        </h:body>
+    </html>
+</f:view>
